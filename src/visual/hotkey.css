@@ -1,0 +1,13 @@
+vishk-key::after {
+    content: "A";
+    padding: 1px;
+    font-size: 0.8em;
+    border-radius: 15%;
+    line-height: 1em;
+    border: 2px solid gray;
+    aspect-ratio: 1 / 1;
+    height: 1em;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}

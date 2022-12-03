@@ -1,0 +1,18 @@
+[
+  {
+    "url": "google.com\/search.*",
+    "hotkeys": [
+      {
+        "targets":[
+          {
+            "_name": "Top Level Search Result",
+            "keystrokes":[[]],
+            "displayXpath": "//div[@class=\"Test\"]",
+            "clickXpath": "//div[@class=\"Test\"]//a",
+            "injectionType": "absoluteBefore"
+          }
+        ]
+      }
+    ]
+  }
+]
