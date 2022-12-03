@@ -1,5 +1,5 @@
 import json from '@rollup/plugin-json';
-import vuePlugin from 'rollup-plugin-vue';
+
 import {
   chromeExtension,
   simpleReloader,
@@ -34,31 +34,10 @@ export default {
     // chromeExtension() must be first, in order to properly treat manifest.json as the entry point
     chromeExtension({
       extendManifest: {
-        //"oauth2": {
-        //  "client_id": process.env.VUE_APP_OAUTH2_CLIENT_ID,
-        //  "scopes": [
-        //    "https://www.googleapis.com/auth/userinfo.email",
-        //    "https://www.googleapis.com/auth/userinfo.profile"
-        //  ]
-        //},
-        "key": process.env.VUE_APP_MV3_KEY
+        "key": process.env.MV3_KEY
       }
     }),
     simpleReloader(), // Adds a Chrome extension reloader during watch mode
-    vuePlugin({target: 'browser'}),
-    replace({
-      __VUE_OPTIONS_API__: true,
-      __VUE_PROD_DEVTOOLS__: false,
-      "process.env.NODE_ENV": JSON.stringify("production"),
-      "process.env.VUE_APP_FIREBASE_APIKEY":  JSON.stringify(process.env.VUE_APP_FIREBASE_APIKEY),
-      "process.env.VUE_APP_FIREBASE_AUTHDOMAIN": JSON.stringify(process.env.VUE_APP_FIREBASE_AUTHDOMAIN),
-      "process.env.VUE_APP_FIREBASE_PROJECTID": JSON.stringify(process.env.VUE_APP_FIREBASE_PROJECTID),
-      "process.env.VUE_APP_FIREBASE_STORAGEBUCKET": JSON.stringify(process.env.VUE_APP_FIREBASE_STORAGEBUCKET),
-      "process.env.VUE_APP_FIREBASE_MESSAGINGSENDERID": JSON.stringify(process.env.VUE_APP_FIREBASE_MESSAGINGSENDERID),
-      "process.env.VUE_APP_FIREBASE_APPID": JSON.stringify(process.env.VUE_APP_FIREBASE_APPID),
-      "process.env.VUE_APP_MEASUREMENTID": JSON.stringify(process.env.VUE_APP_MEASUREMENTID),
-      preventAssignment: true
-    }),
     typescript(),
     postcss(),
     json(),

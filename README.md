@@ -35,7 +35,7 @@ mv .env.sample .env
 <img src="https://gyazo.com/20b05012fc8d0bb3c4a82d016de08e3a/max_size/1000" width=600></img>
 
 #### Edit `.env`
-Copy private key from `dist.pem` and paste to `VUE_APP_MV3_KEY` 
+Copy private key from `dist.pem` and paste to `MV3_KEY` 
 
 ```txt:.env
 VUE_APP_FIREBASE_APIKEY=XXXXXXXX
@@ -46,7 +46,7 @@ VUE_APP_FIREBASE_MESSAGINGSENDERID=XXXXXXXX
 VUE_APP_FIREBASE_APPID=XXXXXXXX
 VUE_APP_MEASUREMENTID=XXXXXXXX
 VUE_APP_OAUTH2_CLIENT_ID=XXXXXXXX
-VUE_APP_MV3_KEY="-----BEGIN PRIVATE KEY-----\nXXXXX.....XXXXXX\n....\nXXXXXX.....XXXXXXX\n-----END PRIVATE KEY-----"
+MV3_KEY="-----BEGIN PRIVATE KEY-----\nXXXXX.....XXXXXX\n....\nXXXXXX.....XXXXXXX\n-----END PRIVATE KEY-----"
 ```
 
 ## Setup Firebase
@@ -107,7 +107,7 @@ chromeExtension({
         "https://www.googleapis.com/authuserinfo.profile"
       ]
     },
-    "key": process.env.VUE_APP_MV3_KEY
+    "key": process.env.MV3_KEY
   }
 }),
 ```
