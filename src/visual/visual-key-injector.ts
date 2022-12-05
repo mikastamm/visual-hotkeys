@@ -13,18 +13,18 @@ export function injectKeyHtmlObject(target: IOnPageHotkey) {
     // Insert the hotkey element at the appropriate location
     switch (target.injectionType) {
         case InjectionTypes.inlineBefore:
-            target.displayElement.prepend(hotkeyElement);
+            target.displayElementContainer.prepend(hotkeyElement);
             break;
         case InjectionTypes.inlineAfter:
-            target.displayElement.append(hotkeyElement);
+            target.displayElementContainer.append(hotkeyElement);
             break;
         case InjectionTypes.absoluteBefore:
             hotkeyElement.classList.add("vishk-key-before");
-            target.displayElement.prepend(hotkeyElement);
+            target.displayElementContainer.prepend(hotkeyElement);
             break;
         case InjectionTypes.absoluteAfter:
             hotkeyElement.classList.add("vishk-key-after");
-            target.displayElement.prepend(hotkeyElement);
+            target.displayElementContainer.prepend(hotkeyElement);
             break;
         default:
             // Handle invalid injectionType

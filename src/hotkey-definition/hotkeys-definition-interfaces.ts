@@ -8,7 +8,6 @@ export interface IPageShortcuts {
 };
 
 
-
 export interface IShortcutDefinition {
     _name: string;
     keystrokes: IKeystrokeCombination;

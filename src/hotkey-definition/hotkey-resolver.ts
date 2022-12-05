@@ -37,8 +37,9 @@ function resolveSingle(target: IShortcutDefinition):OnPageHotkey{
     var displayElement = getElementByXpath(target.displayXpath);
     return {
         _name: target._name,
+        displayElement: undefined,
         injectionType: target.injectionType,
-        displayElement: displayElement,
+        displayElementContainer: displayElement,
         clickElement: getRelativeElementByXpath(displayElement, target.clickXpath),
         keystrokes: target.keystrokes
     }
@@ -55,7 +56,7 @@ function resolveSequence(target: IShortcutDefinition):OnPageHotkey[]{
         matches.push({
            _name: target._name,
               injectionType: target.injectionType,
-                displayElement: displayElement,
+                displayElementContainer: displayElement,
                 clickElement: getRelativeElementByXpath(displayElement, target.clickXpath),
                 keystrokes: setIterativeHotkeys(target.keystrokes, (index+1)%10),
 
