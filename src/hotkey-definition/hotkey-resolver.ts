@@ -1,11 +1,11 @@
 import {OnPageHotkey} from "./on-page-hotkeys";
-import {ShortcutDefinition, InjectionTypes, PageShortcut, KeystrokeCombination} from "./hotkeys-definition";
+import {IShortcutDefinition, InjectionTypes, IPageShortcuts, IKeystrokeCombination} from "./hotkeys-definition-interfaces";
 import {getElementByXpath, getElementsByXpath, getRelativeElementByXpath} from "../util/xpath";
 import {CommonHotkeys, resolveCommonHotkeyKeystroke} from "./common-hotkeys";
 import {keyToCode} from "../util/keyboard";
-import {Keystroke} from "./keystroke";
+import {Keystroke, KeystrokeCombination} from "./hotkey-definition-classes";
 
-export function resolveHotkeys(pageHotekeys:PageShortcut):OnPageHotkey[]{
+export function resolveHotkeys(pageHotekeys:IPageShortcuts):OnPageHotkey[]{
     var onPageHotkeys:OnPageHotkey[] = [];
     pageHotekeys.hotkeys.forEach(hotkey => {
         if (hotkey.keystrokes.keys.some(x=>x.indexed))
@@ -18,20 +18,22 @@ export function resolveHotkeys(pageHotekeys:PageShortcut):OnPageHotkey[]{
 
 
 
-function setIterativeHotkeys(target:KeystrokeCombination, i:Number){
+function setIterativeHotkeys(target:IKeystrokeCombination, i:Number){
+    target = Object.assign(new KeystrokeCombination(), target);
     target.keys = target.keys.map(keystroke=>{
-        const cpy = Object.assign(Keystroke, keystroke);
+        const cpy = Object.assign(new Keystroke(), keystroke);
         if(cpy.indexed)
         {
             cpy.key = i.toString();
             cpy.code = keyToCode(i.toString());
         }
+        console.log(i)
             return cpy;
     });
     return target;
 }
 
-function resolveSingle(target: ShortcutDefinition):OnPageHotkey{
+function resolveSingle(target: IShortcutDefinition):OnPageHotkey{
     var displayElement = getElementByXpath(target.displayXpath);
     return {
         _name: target._name,
@@ -42,17 +44,20 @@ function resolveSingle(target: ShortcutDefinition):OnPageHotkey{
     }
 }
 
-function resolveSequence(target: ShortcutDefinition):OnPageHotkey[]{
+function resolveSequence(target: IShortcutDefinition):OnPageHotkey[]{
     var matchingElements = getElementsByXpath(target.displayXpath);
     var matches:OnPageHotkey[] = [];
-    for (var i = 0; i < matchingElements.length; i++) {
-        var displayElement = matchingElements[i];
+    const maxExpansion = Math.min(matchingElements.length, 10)
+    for (var i = 0; i < maxExpansion; i++) {
+        const index = i;
+        var displayElement = matchingElements[index];
+
         matches.push({
            _name: target._name,
               injectionType: target.injectionType,
                 displayElement: displayElement,
                 clickElement: getRelativeElementByXpath(displayElement, target.clickXpath),
-                keystrokes: setIterativeHotkeys(target.keystrokes, i),
+                keystrokes: setIterativeHotkeys(target.keystrokes, (index+1)%10),
 
         });
     }

@@ -1,7 +1,8 @@
 import {browser} from "webextension-polyfill-ts";
-import {ShortcutDefinition, PageShortcut} from "./hotkeys-definition";
+import {IShortcutDefinition, IPageShortcuts} from "./hotkeys-definition-interfaces";
 import {resolveHotkeys} from "./hotkey-resolver";
 import {OnPageHotkey} from "./on-page-hotkeys";
+import {PageShortcuts} from "./hotkey-definition-classes";
 
 export async function getHotkeysForPage(url):Promise<OnPageHotkey[]>{
     var hks = await loadShortcutForPage(url);
@@ -13,13 +14,13 @@ async function loadShortcut(){
     return await response.json();
 }
 
-async function loadShortcutForPage(pageUrl):Promise<PageShortcut>{
-    var hotkeys= await loadShortcut();
-    for(var i=0;i<hotkeys.length;i++){
-        if(new RegExp(hotkeys[i].url).test(pageUrl)){
-            return hotkeys[i];
+async function loadShortcutForPage(pageUrl):Promise<IPageShortcuts>{
+    var pageHotkeySets= await loadShortcut();
+    for(var i=0; i<pageHotkeySets.length; i++){
+        if(new RegExp(pageHotkeySets[i].url).test(pageUrl)){
+            return PageShortcuts.FromJson(pageHotkeySets[i]);
         }
     }
-    return {url:pageUrl, hotkeys:[]};
+    return new PageShortcuts();
 }
 

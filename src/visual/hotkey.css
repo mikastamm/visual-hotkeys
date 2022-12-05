@@ -1,7 +1,7 @@
-vishk-key::after {
+.vishk-key {
     content: "A";
     padding: 1px;
-    font-size: 0.8em;
+    font-size: 0.9em;
     border-radius: 15%;
     line-height: 1em;
     border: 2px solid gray;
@@ -10,4 +10,14 @@ vishk-key::after {
     display: inline-flex;
     align-items: center;
     justify-content: center;
+}
+
+.vishk-key-before{
+    position: absolute;
+    left: -2.1em;
+}
+
+.vishk-key-after {
+    position: absolute;
+    left: -2.1em;
 }

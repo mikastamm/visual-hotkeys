@@ -1,5 +1,3 @@
-import {ShortcutDefinition} from "../hotkey-definition/hotkeys-definition";
-import {OnPageHotkey} from "../hotkey-definition/on-page-hotkeys";
 
 export function getElementByXpath(xpath): Element {
     return document.evaluate(

@@ -1,14 +1,17 @@
 import {codeToKey, keyToCode} from "../util/keyboard";
 import {CommonHotkeys, resolveCommonHotkeyKeystroke} from "./common-hotkeys";
-import {Keystroke} from "./keystroke";
+import {IOnPageHotkey} from "./on-page-hotkeys";
 
-export type Hotkey = {
-    targets: ShortcutDefinition[];
+export interface IPageShortcuts {
+    url: string;
+    hotkeys: IShortcutDefinition[];
 };
 
-export type ShortcutDefinition = {
+
+
+export interface IShortcutDefinition {
     _name: string;
-    keystrokes: KeystrokeCombination;
+    keystrokes: IKeystrokeCombination;
     displayXpath: string;
     // The xpath to the element that should be clicked when the hotkey is pressed
     // This is executed relative to the displayXpath
@@ -23,25 +26,22 @@ export enum InjectionTypes {
     absoluteAfter = "absoluteAfter"
 }
 
-export type PageShortcut = {
-    url: string;
-    hotkeys: ShortcutDefinition[];
-};
+export interface IKeystroke {
+    key: string | undefined;
+    code: string | undefined;
 
-export class KeystrokeCombination{
-    preset?:CommonHotkeys;
-    // Define a private property '_myProp'
-    private _keys?: Keystroke[];
-
-    // Define a getter for the 'myProp' property
-    get keys(): Keystroke[] {
-        return this._keys || resolveCommonHotkeyKeystroke(this.preset);
-    }
-
-    // Define a setter for the 'myProp' property
-    set keys(value: Keystroke[]) {
-        this._keys = value;
-    }
+    altKey: boolean;
+    ctrlKey: boolean;
+    metaKey: boolean;
+    shiftKey: boolean;
+    //Wether to assign a number for each element on the page
+    indexed: boolean;
+    preset?: CommonHotkeys;
 }
 
+export interface IKeystrokeCombination{
+    preset?:CommonHotkeys;
+    // Define a private property '_myProp'
+    keys: IKeystroke[];
+}
 

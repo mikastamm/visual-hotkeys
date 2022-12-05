@@ -4,7 +4,19 @@
     "hotkeys": [
       {
         "_name": "Top Level Search Result",
-        "keystrokes": ["index"],
+        "keystrokes":
+          {
+            "keys": [
+              {
+                "altKey": false,
+                "ctrlKey": false,
+                "shiftKey": false,
+                "metaKey": false,
+                "indexed": true
+              }
+            ]
+          }
+        ,
         "displayXpath": "//div[@class=\"MjjYud\"]",
         "clickXpath": "//a",
         "injectionType": "absoluteBefore"

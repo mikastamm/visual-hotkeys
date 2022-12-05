@@ -1,14 +1,21 @@
-import {ShortcutDefinition, InjectionTypes, KeystrokeCombination} from "./hotkeys-definition";
-import {Keystroke} from "./keystroke";
+import {Keystroke, KeystrokeCombination} from "./hotkey-definition-classes";
+import {IKeystrokeCombination, InjectionTypes} from "./hotkeys-definition-interfaces";
 
 
 
-export type OnPageHotkey = {
+export interface IOnPageHotkey {
     _name: string;
-    keystrokes: KeystrokeCombination;
+    keystrokes: IKeystrokeCombination;
     displayElement: Element;
     clickElement: Element;
     injectionType: InjectionTypes;
 }
 
+export class OnPageHotkey implements IOnPageHotkey{
+    _name: string;
+    clickElement: Element;
+    displayElement: Element;
+    injectionType: InjectionTypes;
+    keystrokes: IKeystrokeCombination;
 
+}
