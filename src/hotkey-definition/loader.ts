@@ -1,12 +1,12 @@
 import {browser} from "webextension-polyfill-ts";
-import {IShortcutDefinition, IPageShortcuts} from "./hotkeys-definition-types";
-import {resolveHotkeys} from "./hotkey-resolver";
+import {IShortcutDefinition, IPageShortcuts, PageShortcuts} from "./hotkeys-definition-types";
 import {OnPageHotkey} from "./on-page-hotkeys";
-import {PageShortcuts} from "./hotkey-definition-classes";
+import {onPageHotkeyFactory} from "./on-page-hotkey-loader";
+
 
 export async function getHotkeysForPage(url):Promise<OnPageHotkey[]>{
     var hks = await loadShortcutForPage(url);
-    return resolveHotkeys(hks);
+    return hks.hotkeys.flatMap(hk=> onPageHotkeyFactory.create(hk));
 }
 
 async function loadShortcut(){

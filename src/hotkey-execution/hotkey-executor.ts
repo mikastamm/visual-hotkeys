@@ -15,7 +15,7 @@ export class LinkExecutor implements ILinkExecutor {
         hotkey.clickElement?.click();
     }
     executeNewTab(hotkey:IOnPageHotkey): void {
-        hotkey.clickElement.dispatchEvent(new MouseEvent("auxclick", {
+        hotkey.clickElement?.dispatchEvent(new MouseEvent("auxclick", {
             button: 1,
         }));
     }

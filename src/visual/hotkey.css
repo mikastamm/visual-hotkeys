@@ -1,7 +1,6 @@
 div.vishk-key {
     content: "A";
     padding: 1px;
-    display: inline-block !important;
     font-size: 0.9rem;
     border-radius: 15%;
     line-height: 1rem;

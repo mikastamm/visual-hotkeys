@@ -1,14 +1,12 @@
 import {
-    IKeystrokeCombinationDefinition, IPageShortcuts, IShortcutDefinition,
-    KeyDefinition, Keystroke,
+    IKeystrokeCombinationDefinition, KeyDefinition,
+    Keystroke,
     SequenceDefinition,
     SequenceTypes
 } from "./hotkeys-definition-types";
-import {KeystrokeCombinations, OnPageHotkey} from "./on-page-hotkeys";
-import {KeystrokeCombinationDefinition, ShortcutDefinition} from "./hotkey-definition-classes";
-import {getKeystrokeKeys} from "./common-hotkey-resolver";
-import {getElementByXpath, getElementsByXpath, getRelativeElementByXpath} from "../util/xpath";
+
 import {keyToCodeMap} from "./key-to-code-map";
+import {KeystrokeCombinations} from "./on-page-hotkeys";
 
 export interface IHotkeySequenceExpander {
     expandAndConvertToKeystroke(definition: IKeystrokeCombinationDefinition): KeystrokeCombinations[];
@@ -36,7 +34,7 @@ class HotkeySequenceResolver implements IHotkeySequenceExpander {
 
         let keystrokeCombinations: KeystrokeCombinations[] = [];
         for (const key in this.expandSequence(definition.sequence)) {
-            const existingKeys = new Keystroke(Array.from(definition.keys.codes)) ?? [];
+            const existingKeys = new Keystroke(definition.keys?.codes) ?? [];
             existingKeys.codes.push(keyToCodeMap[key]);
             var combinations = new KeystrokeCombinations([existingKeys]);
             combinations.partOfSequence = true;

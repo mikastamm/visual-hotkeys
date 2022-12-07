@@ -1,8 +1,4 @@
-import {Keystroke, KeystrokeCombinationDefinition} from "./hotkey-definition-classes";
-import {IKeystrokeCombinationDefinition, InjectionTypes, IShortcutDefinition} from "./hotkeys-definition-types";
-import {getRelativeElementByXpath} from "../util/xpath";
-import {IOnPageHotkeyFactory} from "./on-page-hotkey-loader";
-
+import {IKeystroke, InjectionTypes, Keystroke} from "./hotkeys-definition-types";
 
 
 export interface IOnPageHotkey {
@@ -31,10 +27,10 @@ export class OnPageHotkey implements IOnPageHotkey{
 
 }
 export class KeystrokeCombinations {
-    keystrokes: Keystroke[];
+    keystrokes: IKeystroke[];
     partOfSequence: boolean =false;
 
-    constructor(keystrokes: Keystroke[])
+    constructor(keystrokes: IKeystroke[])
     {
         this.keystrokes = keystrokes;
 

@@ -1,11 +1,11 @@
 
-interface IKeyStateTracker {
+export interface IKeyStateTracker {
     isKeyPressed(key: string) : boolean;
     trackKeyDown(event: KeyboardEvent) : void;
     trackKeyUp(event: KeyboardEvent) : void;
 }
 
-class KeyStateTracker implements IKeyStateTracker {
+export class KeyStateTracker implements IKeyStateTracker {
     currentPressedKeys = new Set();
     public isKeyPressed (key: string) {
         return this.currentPressedKeys.has(key);
@@ -18,4 +18,3 @@ class KeyStateTracker implements IKeyStateTracker {
         this.currentPressedKeys.delete(event.code);}
 }
 
-export const keyTracker:IKeyStateTracker = new KeyStateTracker();

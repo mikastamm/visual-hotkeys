@@ -8,4 +8,3 @@ export class HotkeyRenderer implements IHotkeyRenderer {
     }
 }
 
-export const hotkeyRenderer:IHotkeyRenderer = new HotkeyRenderer();

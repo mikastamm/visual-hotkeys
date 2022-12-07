@@ -1,4 +1,5 @@
 import {CommonHotkeys} from "./common-hotkey-resolver";
+import exp from "constants";
 
 export interface IPageShortcuts {
     url: string;
@@ -53,13 +54,17 @@ export enum InjectionTypes {
 
 export interface IKeystroke {
     codes: string[];
+    equals(event: KeyboardEvent);
 }
 
 export class Keystroke implements IKeystroke {
     codes: string[] = [];
 
     constructor(codes: string[] = []) {
-        this.codes = codes;
+        if(!codes)
+            this.codes = [];
+        else
+            this.codes = Array.from(codes);
     }
 
     equals(event: KeyboardEvent) {
@@ -88,7 +93,7 @@ export class KeystrokeCombinationDefinition implements IKeystrokeCombinationDefi
         Object.assign(this, init);
     }
 }
-
+export type KeyDefinition = string;
 /**************************************************/
 
 export interface SequenceDefinition {
@@ -102,4 +107,6 @@ export enum SequenceTypes {
     letterRow2 = "letterRow2",
 
 }
+
+
 

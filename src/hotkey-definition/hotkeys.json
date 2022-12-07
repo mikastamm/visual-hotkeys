@@ -4,19 +4,11 @@
     "hotkeys": [
       {
         "_name": "Top Level Search Result",
-        "keystrokes":
-          {
-            "keys": [
-              {
-                "altKey": false,
-                "ctrlKey": false,
-                "shiftKey": false,
-                "metaKey": false,
-                "indexed": true
-              }
-            ]
+        "keystrokes": {
+          "sequence": {
+            "type": "digits"
           }
-        ,
+        },
         "displayXpath": "//div[@class=\"MjjYud\"]",
         "clickXpath": "//a",
         "injectionType": "absoluteBefore"
@@ -25,15 +17,16 @@
   },
   {
     "url": "github.com\/.*",
-    "hotkeys": [{
+    "hotkeys": [
+      {
         "_name": "User Settings",
-        "keystrokes":
-            {
-              "preset": "menu"
-            },
+        "keystrokes": {
+          "preset": "menu"
+        },
         "displayXpath": "//details[starts-with(@data-feature-preview-indicator-src, '/users/')]/..",
         "clickXpath": "/details/summary",
         "injectionType": "inlineAfter"
-    }]
+      }
+    ]
   }
 ]
