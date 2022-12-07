@@ -22,5 +22,18 @@
         "injectionType": "absoluteBefore"
       }
     ]
+  },
+  {
+    "url": "github.com\/.*",
+    "hotkeys": [{
+        "_name": "User Settings",
+        "keystrokes":
+            {
+              "preset": "menu"
+            },
+        "displayXpath": "//details[starts-with(@data-feature-preview-indicator-src, '/users/')]/..",
+        "clickXpath": "/details/summary",
+        "injectionType": "inlineAfter"
+    }]
   }
 ]

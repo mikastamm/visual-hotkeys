@@ -1,5 +1,5 @@
 import {browser} from "webextension-polyfill-ts";
-import {IShortcutDefinition, IPageShortcuts} from "./hotkeys-definition-interfaces";
+import {IShortcutDefinition, IPageShortcuts} from "./hotkeys-definition-types";
 import {resolveHotkeys} from "./hotkey-resolver";
 import {OnPageHotkey} from "./on-page-hotkeys";
 import {PageShortcuts} from "./hotkey-definition-classes";

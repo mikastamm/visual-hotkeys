@@ -7,7 +7,9 @@
     "dev": "rollup -c -w"
   },
   "dependencies": {
+    "bootstrap": "^5.2.3",
     "dotenv": "^16.0.0",
+    "html-element-picker": "^1.1.2",
     "rollup-plugin-alias": "^2.2.0",
     "rollup-plugin-css-only": "^3.1.0",
     "rollup-plugin-import-css": "^3.0.3",

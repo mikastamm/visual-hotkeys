@@ -1,15 +1,16 @@
 
-export function getElementByXpath(xpath): Element {
-    return document.evaluate(
+export function getElementByXpath(xpath): HTMLElement {
+    let result = document.evaluate(
         xpath,
         document,
         null,
         XPathResult.FIRST_ORDERED_NODE_TYPE,
         null
-    ).singleNodeValue as Element;
+    ).singleNodeValue;
+    return result as HTMLElement;
 }
 
-export function getElementsByXpath(xpath: string): Element[] {
+export function getElementsByXpath(xpath: string): HTMLElement[] {
     // Use the document.evaluate method to find the elements that match the given xpath
     const result = document.evaluate(
         xpath,
@@ -17,12 +18,12 @@ export function getElementsByXpath(xpath: string): Element[] {
     );
 
     // Create an empty array of Element types
-    const elements: Element[] = [];
+    const elements: HTMLElement[] = [];
 
     // Iterate over the result object and add each element to the elements array
     let element = result.iterateNext();
     while (element) {
-        elements.push(element as Element);
+        elements.push(element as HTMLElement);
         element = result.iterateNext();
     }
 
@@ -31,9 +32,9 @@ export function getElementsByXpath(xpath: string): Element[] {
 }
 
 export function getRelativeElementByXpath(
-    relativeTo: Element,
+    relativeTo: HTMLElement,
     xpath: string
-): Element {
+): HTMLElement {
     // Use the document.evaluate method to find the element that matches the given xpath, relative to the given element
     const element = document.evaluate(
         getElementXPath(relativeTo) + xpath,
@@ -42,9 +43,8 @@ export function getRelativeElementByXpath(
         XPathResult.FIRST_ORDERED_NODE_TYPE,
         null
     ).singleNodeValue;
-    console.log(getElementXPath(relativeTo) + xpath)
     // Return the element
-    return element as Element;
+    return element as HTMLElement;
 }
 
 function getElementXPath (element) {

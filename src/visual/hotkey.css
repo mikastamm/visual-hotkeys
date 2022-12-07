@@ -1,17 +1,22 @@
-.vishk-key {
+div.vishk-key {
     content: "A";
     padding: 1px;
-    font-size: 0.9em;
+    display: inline-block !important;
+    font-size: 0.9rem;
     border-radius: 15%;
-    line-height: 1em;
+    line-height: 1rem;
     border: 2px solid gray;
     aspect-ratio: 1 / 1;
-    height: 1em;
+    height: 1rem;
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    /* Set the duration of the fade-in effect */
+    transition: opacity 100ms ease-out;
 }
-
+.vishk-key-hidden {
+    opacity: 0;
+}
 .vishk-key-before{
     position: absolute;
     left: -2.1em;
@@ -20,4 +25,9 @@
 .vishk-key-after {
     position: absolute;
     left: -2.1em;
+}
+
+.vishk-key-active{
+    filter: invert(1);
+    background: grey;
 }

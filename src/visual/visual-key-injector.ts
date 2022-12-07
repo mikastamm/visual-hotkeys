@@ -1,15 +1,26 @@
 import {IOnPageHotkey} from "../hotkey-definition/on-page-hotkeys";
-import {InjectionTypes} from "../hotkey-definition/hotkeys-definition-interfaces";
+import {InjectionTypes} from "../hotkey-definition/hotkeys-definition-types";
+import {HOTKEY_DOWN, HOTKEY_UP} from "../key-listener";
 
 export function injectKeyHtmlObject(target: IOnPageHotkey) {
 
     // Create the HTML element for the hotkey
     const hotkeyElement = document.createElement("div");
-    hotkeyElement.classList.add("vishk-key");
+    target.displayElement = hotkeyElement;
+    hotkeyElement.classList.add("vishk-key")
+    hotkeyElement.classList.add("vishk-key-hidden");
     hotkeyElement.innerText = target.keystrokes.keys
         .map(keystroke => keystroke.key || keystroke.code)
         .join(", ");
 
+    placeVisualKey(target, hotkeyElement);
+setTimeout(() => {
+    hotkeyElement.classList.remove("vishk-key-hidden");
+
+}, 1);
+}
+
+function placeVisualKey(target: IOnPageHotkey, hotkeyElement: HTMLDivElement) {
     // Insert the hotkey element at the appropriate location
     switch (target.injectionType) {
         case InjectionTypes.inlineBefore:
@@ -32,3 +43,16 @@ export function injectKeyHtmlObject(target: IOnPageHotkey) {
     }
 }
 
+export function respondVisuallyToHotkeys() {
+
+    // @ts-ignore
+    window.addEventListener(HOTKEY_DOWN, (event: CustomEvent) => {
+       let hotkey = event.detail as IOnPageHotkey;
+       hotkey.displayElement?.classList.add("vishk-key-active");
+    });
+    // @ts-ignore
+    window.addEventListener(HOTKEY_UP, (event: CustomEvent) => {
+        let hotkey = event.detail as IOnPageHotkey;
+        hotkey.displayElement?.classList.remove("vishk-key-active");
+    });
+}
