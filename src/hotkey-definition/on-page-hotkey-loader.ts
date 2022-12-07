@@ -20,7 +20,7 @@ export class OnPageHotkeyFactory implements IOnPageHotkeyFactory {
             var clickXpath = hkAPI.content.contentExtractor.getSelectorForElement(keystrokeWithElement.element as HTMLElement) + definition.clickXpath;
 
             return new OnPageHotkey({
-                _name: definition._name,
+                _name: definition.id,
                 injectionType: definition.injectionType,
                 displayElementContainer: keystrokeWithElement.element as HTMLElement,
                 clickElement: hkAPI.content.contentExtractor.getElement(clickXpath),

@@ -3,13 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <script src="popup.ts"></script>
+    <script src="uiAPI.ts"></script>
+    <script src="../frontend/hkAPI.ts"></script>
+
 </head>
 <body>
 <!-- HTML for the context menu -->
 <div class="context-menu">
-    <div class="menu-item">Disable visuals for current page</div>
-    <div class="menu-item">Disable visuals for current Domain</div>
-    <div class="menu-item">Disable visuals</div>
+    <div id="disableVisualsCurrentPage" onclick="hkAPI.content.popupController.toggleVisualsOnCurrentPage()" class="menu-item">Disable visuals for current page</div>
+    <div onClick="hkAPI.content.popupController.toggleVisualsOnDomain()" class="menu-item">Disable visuals for current Domain</div>
+    <button onClick="console.log(1)" class="menu-item">Disable visuals</button>
     <hr />
     <div class="menu-item">Options...</div>
     <div class="menu-item">Add a hotkey...</div>

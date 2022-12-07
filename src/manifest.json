@@ -2,6 +2,7 @@
   "name": "Visual Hotkey",
   "description": "Use your Keyboard to browse the Web!",
   "version": "0.1.0",
+  "storage": "local",
   "manifest_version": 3,
   "icons": {
     "16": "/images/icon16.png",

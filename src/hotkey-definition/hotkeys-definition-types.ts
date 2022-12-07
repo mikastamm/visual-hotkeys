@@ -21,7 +21,7 @@ export class PageShortcuts implements IPageShortcuts {
 /**************************************************/
 
 export interface IShortcutDefinition {
-    _name: string;
+    id: ShortcutDefinitionId;
     keystrokes: IKeystrokeCombinationDefinition;
     displayXpath: string;
     // The xpath to the element that should be clicked when the hotkey is pressed
@@ -29,9 +29,10 @@ export interface IShortcutDefinition {
     clickXpath: string;
     injectionType: InjectionTypes;
 }
+export type ShortcutDefinitionId = string;
 
 export class ShortcutDefinition implements IShortcutDefinition {
-    _name: string = "";
+    id: ShortcutDefinitionId = "";
     keystrokes: KeystrokeCombinationDefinition = new KeystrokeCombinationDefinition();
     displayXpath: string = "";
     // The xpath to the element that should be clicked when the hotkey is pressed

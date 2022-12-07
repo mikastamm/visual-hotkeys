@@ -18,12 +18,4 @@ class CommonHotkeyResolver implements ICommonHotkeyResolver{
     }
 }
 export var commonHotkeyResolver:ICommonHotkeyResolver = new CommonHotkeyResolver();
-export enum CommonHotkeys {
-    OPEN_SETTINGS = "open-settings",
-    GOTO_HOME = "goto-home",
-    SEARCH = "search",
-    NEXT_PAGE = "next-page",
-    PREVIOUS_PAGE = "previous-page",
-}
-
 
