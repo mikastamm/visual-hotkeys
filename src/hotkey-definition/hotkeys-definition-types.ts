@@ -1,5 +1,5 @@
-import {CommonHotkeys} from "./common-hotkey-resolver";
 import exp from "constants";
+import {CommonHotkeys} from "../background/plugin-settings";
 
 export interface IPageShortcuts {
     url: string;
