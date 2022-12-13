@@ -13,7 +13,9 @@ import postcss from 'rollup-plugin-postcss';
 import alias from 'rollup-plugin-alias';
 import _dotenv from 'dotenv/config';
 import path from "path";
-
+import {fileURLToPath} from 'url';
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 export default {
   input: 'src/manifest.json',
   output: {

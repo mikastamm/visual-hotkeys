@@ -94,7 +94,7 @@ Copy Your Client Id to `VUE_APP_OAUTH2_CLIENT_ID`
 <img src="https://user-images.githubusercontent.com/8764140/197352728-c2ebd1ca-af19-4a40-b0cf-e4f836eced69.png" width=600></img>  
 
 
-#### Edit `rollup.config.js`.
+#### Edit `rollup.config.mjs`.
 Uncomment oauth2 settings.
 
 ```js

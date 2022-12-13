@@ -3,20 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <script src="popup.ts"></script>
-    <script src="uiAPI.ts"></script>
-    <script src="../frontend/hkAPI.ts"></script>
-
+    <script src="popupController.ts"></script>
 </head>
 <body>
 <!-- HTML for the context menu -->
 <div class="context-menu">
-    <div id="disableVisualsCurrentPage" onclick="hkAPI.content.popupController.toggleVisualsOnCurrentPage()" class="menu-item">Disable visuals for current page</div>
-    <div onClick="hkAPI.content.popupController.toggleVisualsOnDomain()" class="menu-item">Disable visuals for current Domain</div>
-    <button onClick="console.log(1)" class="menu-item">Disable visuals</button>
+    <button id="disableVisualsCurrentPage"  class="menu-item">Disable visuals for current page</button>
+    <button id="disableVisualsCurrentDomain"  class="menu-item">Disable visuals for current Domain</button>
+    <button id="disableVisualsGlobal"  class="menu-item">Disable visuals</button>
     <hr />
-    <div class="menu-item">Options...</div>
-    <div class="menu-item">Add a hotkey...</div>
+    <button id="openOptions" class="menu-item">Options...</button>
+    <button id="addHotkey" class="menu-item" >Add a hotkey...</button>
 </div>
 
 <!-- CSS for the context menu -->
@@ -33,6 +30,8 @@
     }
 
     .menu-item {
+        border: none;
+        background: #333333;
         border-radius: 2px;
         cursor: pointer;
         padding: 8px;
