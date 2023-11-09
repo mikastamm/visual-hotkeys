@@ -12,9 +12,9 @@ The web has too few keyboard shortcuts! This extension adds a few more. It aims 
 ## Features
 - [x] Hotkeys (0-9) for the Search Results on DuckDuckGo and Google
 - [x] Hold the alt key to open search results in a new tab
-- [x] Define custom hotkeys for any website using JSON & xpath
 
 ## Plans
+- [ ] Define custom hotkeys for any website using JSON & xpath
 - [ ] Add unified hotkeys for common action-concepts across multiple pages (Site-Home, Preferences, Next-Item etc.)
 - [ ] Make it easy for users to add their own hotkeys
 - [ ] Let people share their hotkeys and create a community curated set of useful hotkeys for many pages
